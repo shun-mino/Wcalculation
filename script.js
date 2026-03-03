@@ -1,25 +1,31 @@
-// TF
-let tfClass = "";
-if (tf !== undefined) {
-    const R = tf * L;
-    const P = V * V / R;
-    const Wm = P / L;
+function createTable(title, list, V, L) {
+    let html = `<div class="section"><h3>${title}</h3>`;
+    html += `<table>
+        <tr>
+            <th>Ω/m</th>
+            <th>電力(W)</th>
+            <th>W/m</th>
+        </tr>`;
 
-    tfPower = P.toFixed(1);
-    tfWm = Wm.toFixed(1);
+    list.forEach(r => {
+        const R = r * L;
+        const P = V * V / R;
+        const Wm = P / L;
 
-    if (Wm >= 35) tfClass = "red"; // ← TF条件
-}
+        let redClass = "";
 
-// GH
-let ghClass = "";
-if (gh !== undefined) {
-    const R = gh * L;
-    const P = V * V / R;
-    const Wm = P / L;
+        // 
+        if (title === "TF" && Wm >= 35) redClass = "red";
+        if (title === "GH" && Wm >= 100) redClass = "red";
 
-    ghPower = P.toFixed(1);
-    ghWm = Wm.toFixed(1);
+        html += `
+        <tr>
+            <td>${r}</td>
+            <td>${P.toFixed(1)}</td>
+            <td class="${redClass}">${Wm.toFixed(1)}</td>
+        </tr>`;
+    });
 
-    if (Wm >= 100) ghClass = "red"; // ← GH条件
+    html += `</table></div>`;
+    return html;
 }
