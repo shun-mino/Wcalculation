@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <title>TF / GH 計算ツール</title>
 
+<link rel="stylesheet" href="style.css">
+
 <style>
 body { font-family: sans-serif; padding: 20px; }
 input { margin: 5px; }
@@ -11,7 +13,6 @@ table { border-collapse: collapse; margin-top: 20px; }
 td, th { border: 1px solid #333; padding: 6px 10px; text-align: center; }
 .red { background-color: #ff4d4d; color: white; }
 .section { margin-top: 30px; }
-<link rel="stylesheet" href="style.css">
 </style>
 </head>
 
@@ -50,7 +51,7 @@ function createTable(title, list, V, L) {
         if (title === "TF") {
             if (Wm >= 50) {
                 redClass = "red";
-            } else if (50 > Wm >= 35){
+            } else if (Wm >= 35 && Wm < 50){
                 redClass = "yellow";
             }
             
