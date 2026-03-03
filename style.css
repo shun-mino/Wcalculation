@@ -1,0 +1,28 @@
+/* スマホ対応 */
+@media screen and (max-width: 600px) {
+
+    body {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    input {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    button {
+        width: 100%;
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    table {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    td, th {
+        padding: 4px;
+    }
+}
