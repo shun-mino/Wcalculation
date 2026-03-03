@@ -1,3 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>TF / GH 計算ツール</title>
+
+<style>
+body { font-family: sans-serif; padding: 20px; }
+input { margin: 5px; }
+table { border-collapse: collapse; margin-top: 20px; }
+td, th { border: 1px solid #333; padding: 6px 10px; text-align: center; }
+.red { background-color: #ff4d4d; color: white; }
+.section { margin-top: 30px; }
+</style>
+</head>
+
+<body>
+
+<h2>TF と GH の長さと電力計算</h2>
+
+電圧(V)：<input id="voltage" value="200"><br>
+長さ(m)：<input id="length" value="5"><br>
+
+<button onclick="calc()">計算</button>
+
+<div id="output"></div>
+
 <script>
 const TF = [300,100,53.2,33,20.5,12.8,7,4.5,2.3,1.1,0.53,0.3,0.125];
 const GH = [300,80,40,25,8.7,3.8,1.7];
@@ -18,7 +45,7 @@ function createTable(title, list, V, L) {
 
         let redClass = "";
 
-        // 🔥 条件分け（ここがやりたかったやつ）
+        // 🔥 条件
         if (title === "TF" && Wm >= 35) redClass = "red";
         if (title === "GH" && Wm >= 100) redClass = "red";
 
@@ -45,3 +72,6 @@ function calc() {
     document.getElementById("output").innerHTML = result;
 }
 </script>
+
+</body>
+</html>
