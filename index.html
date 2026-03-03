@@ -43,17 +43,14 @@ function createTable(title, list, V, L) {
         const P = V * V / R;
         const Wm = P / L;
 
-
-        const redClass = Wm >= 50 ? "red" : "";
-        const redClass = Wm >= 35 ? "yellow" : "";
-
-        html += `
-        <tr>
-            <td>${r}</td>
-            <td>${P.toFixed(1)}</td>
-            <td class="${redClass}">${Wm.toFixed(1)}</td>
-        </tr>`;
-    });
+html += `
+<tr>
+    <td>${tf ?? gh}</td>
+    <td>${tfPower}</td>
+    <td class="${tfClass}">${tfWm}</td>
+    <td>${ghPower}</td>
+    <td class="${ghClass}">${ghWm}</td>
+</tr>`;
 
     html += `</table></div>`;
     return html;
