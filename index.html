@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>TF / GH 計算ツール</title>
+
+<style>
+body { font-family: sans-serif; padding: 20px; }
+input { margin: 5px; }
+table { border-collapse: collapse; margin-top: 20px; }
+td, th { border: 1px solid #333; padding: 6px 10px; text-align: center; }
+.red { background-color: #ff4d4d; color: white; }
+.section { margin-top: 30px; }
+</style>
+</head>
+
+<body>
+
+<h2>TF と GH の長さと電力計算</h2>
+
+電圧(V)：<input id="voltage" value="200"><br>
+長さ(m)：<input id="length" value="5"><br>
+
+<button onclick="calc()">計算</button>
+
+<div id="output"></div>
+
+<script>
+const TF = [300,100,53.2,33,20.5,12.8,7,4.5,2.3,1.1,0.53,0.3,0.125];
+const GH = [300,80,40,25,8.7,3.8,1.7];
+
+function createTable(title, list, V, L) {
+    let html = `<div class="section"><h3>${title}</h3>`;
+    html += `<table>
+        <tr>
+            <th>Ω/m</th>
+            <th>電力(W)</th>
+            <th>W/m</th>
+        </tr>`;
+
+    list.forEach(r => {
+        const R = r * L;
+        const P = V * V / R;
+        const Wm = P / L;
+
+        // 🔴 条件：W/mが35以上なら赤（必要なら変えれる）
+        const redClass = Wm >= 35 ? "red" : "";
+
+        html += `
+        <tr>
+            <td>${r}</td>
+            <td>${P.toFixed(1)}</td>
+            <td class="${redClass}">${Wm.toFixed(1)}</td>
+        </tr>`;
+    });
+
+    html += `</table></div>`;
+    return html;
+}
+
+function calc() {
+    const V = Number(document.getElementById("voltage").value);
+    const L = Number(document.getElementById("length").value);
+
+    let result = "";
+    result += createTable("TF", TF, V, L);
+    result += createTable("GH", GH, V, L);
+
+    document.getElementById("output").innerHTML = result;
+}
+</script>
+
+</body>
+</html>
