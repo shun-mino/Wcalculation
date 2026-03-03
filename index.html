@@ -46,7 +46,15 @@ function createTable(title, list, V, L) {
         let redClass = "";
 
         // 🔥 条件
-        if (title === "TF" && Wm >= 35) redClass = "red";
+
+        // TF
+        if (title === "TF") {
+            if (Wm >= 50) {
+                redClass = "red";
+            } else if (Wm >= 35) {
+                redClass = "yellow";
+            }
+        }
         if (title === "GH" && Wm >= 100) redClass = "red";
 
         html += `
