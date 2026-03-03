@@ -25,4 +25,8 @@
     td, th {
         padding: 4px;
     }
+    
+    .yellow {
+    background-color: #ffd966;
+    }
 }
