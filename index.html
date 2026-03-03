@@ -43,8 +43,9 @@ function createTable(title, list, V, L) {
         const P = V * V / R;
         const Wm = P / L;
 
-        // 🔴 条件：W/mが35以上なら赤（必要なら変えれる）
-        const redClass = Wm >= 35 ? "red" : "";
+
+        const redClass = Wm >= 50 ? "red" : "";
+        const redClass = Wm >= 35 ? "yellow" : "";
 
         html += `
         <tr>
