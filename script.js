@@ -10,6 +10,7 @@ function createTable(title, list, V, L) {
     list.forEach(r => {
         const R = r * L;
         const P = V * V / R;
+        comst I = V / R;
         const Wm = P / L;
 
         let redClass = "";
@@ -21,7 +22,9 @@ function createTable(title, list, V, L) {
         html += `
         <tr>
             <td>${r}</td>
+            <td>${R.toFixed(1)}</td>
             <td>${P.toFixed(1)}</td>
+            <td>${I.toFixed(1)}</td>
             <td class="${redClass}">${Wm.toFixed(1)}</td>
         </tr>`;
     });
