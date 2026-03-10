@@ -3,7 +3,9 @@ function createTable(title, list, V, L) {
     html += `<table>
         <tr>
             <th>Ω/m</th>
+            <th>t抵抗値Ω</th>
             <th>電力(W)</th>
+            <th>電流（A）</th>
             <th>W/m</th>
         </tr>`;
 
